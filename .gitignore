@@ -34,7 +34,7 @@ env.bak/
 venv.bak/
 
 #static
-angular_build/
+luchetti-site/
 static/
 staticfiles/
 templates/

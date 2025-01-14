@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+import os
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -25,7 +26,9 @@ SECRET_KEY = 'django-insecure-h2^ctk+pd9j#@$*!vn@tqk0o4_wxk&)_1patt83n#ui#m!kr&%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.luchettigabriel.com', 'luchettigabriel.com']
+# ALLOWED_HOSTS = ['www.luchettigabriel.com', 'luchettigabriel.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 # Application definition
 
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'luchettigabriel.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'angular_build'],
+        'DIRS': [os.path.join(BASE_DIR, 'luchetti-site/browser')],  # Novo caminho para os templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,7 +69,6 @@ TEMPLATES = [
         },
     },
 ]
-
 
 WSGI_APPLICATION = 'luchettigabriel.wsgi.application'
 
@@ -117,14 +119,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# Adicione o caminho da build do Angular
-ANGULAR_BUILD_DIR = BASE_DIR / 'angular_build'
 STATICFILES_DIRS = [
-    ANGULAR_BUILD_DIR,  # Build do Angular
+    BASE_DIR / 'luchetti-site/browser',  # Caminho para os arquivos estáticos do Angular
 ]
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
